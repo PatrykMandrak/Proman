@@ -168,7 +168,10 @@ None
 
 ## Hints
 
-None
+-a route which returns json data should start with api. Example /api/boards returns json while / returns a html template via render_template
+-construct your route names using the rest principle. Example /api/boards/<boards_id>
+-when an entity is a subset of another entity prefix that entity with the parent entity. Example: /api/boards/<int:board_id>/cards/, /api/boards/board_id">int:board_id/statuses/
+-after you implement the log in functionality a board will belong to an user so the routes should be refactored as /api/users/<user_id>/boards/<board_id>/ and /api/users/<user_id>/boards/<board_id>/cards and so on
 
 ## Background materials
 
