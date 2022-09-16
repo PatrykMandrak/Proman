@@ -7,6 +7,14 @@ export let domManager = {
             console.error("could not find such html element: " + parentIdentifier);
         }
     },
+//    editElementValue(identifier, newValue) {
+//        const element = document.querySelector(identifier);
+//        if (parent) {
+//            element.value = newValue;
+//        } else {
+//            console.error("could not find such html element: " + identifier);
+//        }
+//    },
     addEventListener(parentIdentifier, eventType, eventHandler) {
         const parent = document.querySelector(parentIdentifier);
         if (parent) {
