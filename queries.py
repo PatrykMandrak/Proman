@@ -45,3 +45,22 @@ def get_cards_for_board(board_id):
         , {"board_id": board_id})
 
     return matching_cards
+
+
+def add_new_board(board_title):
+    data_manager.execute_select("""
+        INSERT INTO boards(title)
+        VALUES (%(board_title)s)
+        ;
+        """, {"board_title": board_title})
+
+
+def add_new_board1(cursor, data):
+    cursor.execute(
+        sql.SQL("""
+        INSERT INTO boards(title)
+        VALUES ({title})
+        """).format(
+            title=sql.Literal(data[0]),
+        )
+    )

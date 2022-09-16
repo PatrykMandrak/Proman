@@ -6,6 +6,11 @@ import {cardsManager} from "./cardsManager.js";
 export let boardsManager = {
     loadBoards: async function () {
         const boards = await dataHandler.getBoards();
+        domManager.addEventListener(
+            `.add-board-button`,
+            "click",
+            addBoardButtonHandler
+        );
         for (let board of boards) {
             const boardBuilder = htmlFactory(htmlTemplates.board);
             const content = boardBuilder(board);
@@ -18,6 +23,12 @@ export let boardsManager = {
         }
     },
 };
+
+function addBoardButtonHandler() {
+    var my_text=prompt('Provide new board name: ');
+    dataHandler.createNewBoard(my_text);
+
+}
 
 function showHideButtonHandler(clickEvent) {
     const boardId = clickEvent.target.dataset.boardId;

@@ -35,6 +35,12 @@ def get_cards_for_board(board_id: int):
     return queries.get_cards_for_board(board_id)
 
 
+@app.route("/api/add-new-board/<string:boardTitle>", methods=["PUT"])
+def put_new_public_board(boardTitle: str):
+    return queries.add_new_board(boardTitle)
+
+
+
 def main():
     app.run(debug=True)
 
