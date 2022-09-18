@@ -42,7 +42,7 @@ def get_connection_data(db_name=None):
     }
 
 
-def execute_select(statement, variables=None, fetchall=True):
+def execute_select(statement, variables=None, fetchall=True, isSelect=True):
     """
     Execute SELECT statement optionally parameterized.
     Use fetchall=False to get back one value (fetchone)
@@ -54,7 +54,10 @@ def execute_select(statement, variables=None, fetchall=True):
     result_set = []
     with establish_connection() as conn:
         with conn.cursor(cursor_factory=psycopg2.extras.RealDictCursor) as cursor:
-            cursor.execute(statement, variables)
-            result_set = cursor.fetchall() if fetchall else cursor.fetchone()
+            if isSelect:
+                cursor.execute(statement, variables)
+                result_set = cursor.fetchall() if fetchall else cursor.fetchone()
+            else:
+                return cursor.execute(statement, variables)
     return result_set
 

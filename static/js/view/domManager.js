@@ -7,6 +7,9 @@ export let domManager = {
             console.error("could not find such html element: " + parentIdentifier);
         }
     },
+    destroyBoard() {
+        document.getElementById("root").innerHTML="";
+    },
 //    editElementValue(identifier, newValue) {
 //        const element = document.querySelector(identifier);
 //        if (parent) {

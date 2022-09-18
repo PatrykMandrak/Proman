@@ -11,6 +11,7 @@ export let boardsManager = {
             "click",
             addBoardButtonHandler
         );
+        domManager.destroyBoard();
         for (let board of boards) {
             const boardBuilder = htmlFactory(htmlTemplates.board);
             const content = boardBuilder(board);
@@ -27,7 +28,7 @@ export let boardsManager = {
 function addBoardButtonHandler() {
     var my_text=prompt('Provide new board name: ');
     dataHandler.createNewBoard(my_text);
-
+    setTimeout(boardsManager.loadBoards(),1000);
 }
 
 function showHideButtonHandler(clickEvent) {

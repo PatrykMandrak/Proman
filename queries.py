@@ -52,7 +52,7 @@ def add_new_board(board_title):
         INSERT INTO boards(title)
         VALUES (%(board_title)s)
         ;
-        """, {"board_title": board_title})
+        """, {"board_title": board_title}, True, False)
 
 
 def add_new_board1(cursor, data):
